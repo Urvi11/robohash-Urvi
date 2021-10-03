@@ -31,7 +31,7 @@ console.log(generateString(5));
 
 
 // promise
-function writeFilePromise(fileLocation, result) {
+/*function writeFilePromise(fileLocation, result) {
     return new Promise((resolve, reject) => {
       fs.writeFile(fileLocation, result, (err) => {
         if (err) {
@@ -55,3 +55,30 @@ function writeFilePromise(fileLocation, result) {
    .catch((err) => {
      console.log(err)
    })
+*/
+
+// aync await
+
+async function getRobotPic() {
+    try {
+      
+      const res = await superagent.get(
+        `https://robohash.org/generateString(5)`
+      )
+      console.log('robot image is ', res.request.url)
+      await writeFilePromise('./robotImage.txt', res.request.url)
+      console.log('sucessfully written the file')
+    } catch (err) {
+      throw err
+    }
+    
+  }
+  
+  ;(async () => {
+    try {
+      await getRobotPic()
+      console.log('end')
+    } catch (err) {
+      console.log('end due to error')
+    }
+  })()
