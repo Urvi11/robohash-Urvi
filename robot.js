@@ -18,6 +18,7 @@ function generateString(length) {
 
 console.log(generateString(5));
 
+//callback
 superagent
    .get(`https://robohash.org/generateString(5)`)
      .then((res) => {
